@@ -1,16 +1,19 @@
 import React from "react";
-import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import SectionTitle from "../../../../Components/SectionTitle/SectionTitle";
 
-import featuredImg from "../../../assets/home/featured.jpg";
+import featuredImg from "../../../../assets/home/featured.jpg";
 
 const Feature = () => {
   return (
-    <div style={{ backgroundImage: `url(${featuredImg})` }}>
+    <div
+      style={{ backgroundImage: `url(${featuredImg})` }}
+      className="pt-8 my-20 bg-fixed"
+    >
       <SectionTitle
         subHeading="Check it out"
         heading="Featured Item"
       ></SectionTitle>
-      <div className="md:flex justify-center items-center py-10 px-16 md:py-20 md:px-36 space-x-4 text-white space-y-4">
+      <div className="md:flex justify-center items-center py-10 px-16 md:py-20 md:px-36 space-x-4 text-white space-y-4 bg-black bg-opacity-40">
         <div>
           <img src={featuredImg} alt="" />
         </div>
