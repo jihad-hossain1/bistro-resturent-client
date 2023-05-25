@@ -1,98 +1,95 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-    const navOptions = (
-      <>
-        <li className="hover:text-primary hover:font-semibold">
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-secondary" : "default"
-            }
-            to="/"
-          >
-            Home
-          </NavLink>
-        </li>
-        <li className="hover:text-primary hover:font-semibold">
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-secondary" : "default"
-            }
-            to="/"
-          >
-            Contact Us
-          </NavLink>
-        </li>
-        <li className="hover:text-primary hover:font-semibold">
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-secondary" : "default"
-            }
-            to="/"
-          >
-            Dashboard
-          </NavLink>
-        </li>
-        <li className="hover:text-primary hover:font-semibold">
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-secondary" : "default"
-            }
-            to="/"
-          >
-            Our Menu
-          </NavLink>
-        </li>
-        <li className="hover:text-primary hover:font-semibold">
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-secondary" : "default"
-            }
-            to="/"
-          >
-            Our Shop
-          </NavLink>
-        </li>
-        <li className="hover:text-primary hover:font-semibold">
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "text-primary" : "default"
-            }
-            to="/"
-          >
-            LogIn
-          </NavLink>
-        </li>
-      </>
-    );
-    return (
-      <>
-        <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white max-w-screen-xl">
-          <div className="navbar-start">
-            <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+  const navOptions = (
+    <>
+      <li className="hover:text-primary hover:font-semibold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary" : "default"
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li className="hover:text-primary hover:font-semibold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary" : "default"
+          }
+          to=""
+        >
+          Contact Us
+        </NavLink>
+      </li>
+      <li className="hover:text-primary hover:font-semibold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary" : "default"
+          }
+          to=""
+        >
+          Dashboard
+        </NavLink>
+      </li>
+      <li className="hover:text-primary hover:font-semibold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary" : "default"
+          }
+          to="/menu"
+        >
+          Our Menu
+        </NavLink>
+      </li>
+      <li className="hover:text-primary hover:font-semibold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary" : "default"
+          }
+        >
+          Our Shop
+        </NavLink>
+      </li>
+      <li className="hover:text-primary hover:font-semibold">
+        <NavLink
+          className={({ isActive }) => (isActive ? "text-primary" : "default")}
+          to=""
+        >
+          LogIn
+        </NavLink>
+      </li>
+    </>
+  );
+  return (
+    <>
+      <div className="navbar fixed z-10 bg-opacity-30 bg-white text-black max-w-screen-xl">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                {navOptions}
-                {/* <li className="hover:font-semibold hover:text-primary">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {navOptions}
+              {/* <li className="hover:font-semibold hover:text-primary">
                   <NavLink
                     className={({ isActive }) =>
                       isActive ? "text-primary" : "default"
@@ -137,23 +134,23 @@ const Navbar = () => {
                     Blog
                   </NavLink>
                 </li> */}
-              </ul>
-            </div>
-            <div className="flex items-center">
-              <img src="" className="w-10" alt="" />
-              <NavLink to="/" className="text-xl ml-2">
-                Bistro{" "}
-                <span className="font-semibold hover:text-primary">
-                  Resturant
-                </span>
-              </NavLink>
-            </div>
+            </ul>
           </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu-horizontal space-x-10">
-              {navOptions}
+          <div className="flex items-center">
+            <img src="" className="w-10" alt="" />
+            <NavLink to="/" className="text-xl ml-2">
+              Bistro{" "}
+              <span className="font-semibold hover:text-primary">
+                Resturant
+              </span>
+            </NavLink>
+          </div>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu-horizontal space-x-10">
+            {navOptions}
 
-              {/* <li className=" hover:font-semibold hover:text-primary">
+            {/* <li className=" hover:font-semibold hover:text-primary">
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? "text-primary" : "default"
@@ -163,7 +160,7 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li> */}
-              {/* <li className=" hover:font-semibold hover:text-primary">
+            {/* <li className=" hover:font-semibold hover:text-primary">
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? "text-primary" : "default"
@@ -197,7 +194,7 @@ const Navbar = () => {
                   </NavLink>
                 </li>
               )} */}
-              {/* <li className="  hover:font-semibold hover:text-primary">
+            {/* <li className="  hover:font-semibold hover:text-primary">
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? "text-primary" : "default"
@@ -207,10 +204,10 @@ const Navbar = () => {
                   Blog
                 </NavLink>
               </li> */}
-            </ul>
-          </div>
-          <div className="navbar-end">
-            {/* {user ? (
+          </ul>
+        </div>
+        <div className="navbar-end">
+          {/* {user ? (
               <div className="flex items-center space-x-2">
                 <FaUserAlt
                   title={user.email.slice(0, 5)}
@@ -243,11 +240,11 @@ const Navbar = () => {
               </Link>
             )} */}
 
-            <NavLink>Contact</NavLink>
-          </div>
+          <NavLink>Contact</NavLink>
         </div>
-      </>
-    );
+      </div>
+    </>
+  );
 };
 
 export default Navbar;
