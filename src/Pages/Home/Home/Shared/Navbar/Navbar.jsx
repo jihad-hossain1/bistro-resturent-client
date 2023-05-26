@@ -14,7 +14,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="hover:text-primary hover:font-semibold">
+      {/* <li className="hover:text-primary hover:font-semibold">
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-secondary" : "default"
@@ -23,8 +23,8 @@ const Navbar = () => {
         >
           Contact Us
         </NavLink>
-      </li>
-      <li className="hover:text-primary hover:font-semibold">
+      </li> */}
+      {/* <li className="hover:text-primary hover:font-semibold">
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-secondary" : "default"
@@ -33,7 +33,7 @@ const Navbar = () => {
         >
           Dashboard
         </NavLink>
-      </li>
+      </li> */}
       <li className="hover:text-primary hover:font-semibold">
         <NavLink
           className={({ isActive }) =>
@@ -41,7 +41,7 @@ const Navbar = () => {
           }
           to="/menu"
         >
-          Our Menu
+          Menu
         </NavLink>
       </li>
       <li className="hover:text-primary hover:font-semibold">
@@ -49,18 +49,19 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "text-secondary" : "default"
           }
+          to="/order/salad"
         >
-          Our Shop
+          Order Food
         </NavLink>
       </li>
-      <li className="hover:text-primary hover:font-semibold">
+      {/* <li className="hover:text-primary hover:font-semibold">
         <NavLink
           className={({ isActive }) => (isActive ? "text-primary" : "default")}
           to=""
         >
           LogIn
         </NavLink>
-      </li>
+      </li> */}
     </>
   );
   return (
