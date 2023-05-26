@@ -54,6 +54,16 @@ const Navbar = () => {
           Order Food
         </NavLink>
       </li>
+      <li className="hover:text-primary hover:font-semibold">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary" : "default"
+          }
+          to="/login"
+        >
+          Login
+        </NavLink>
+      </li>
       {/* <li className="hover:text-primary hover:font-semibold">
         <NavLink
           className={({ isActive }) => (isActive ? "text-primary" : "default")}
