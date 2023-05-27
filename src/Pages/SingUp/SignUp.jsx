@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    });
+  };
   return (
     <>
       <Helmet>
         <title>Bistro Boss || Sign Up</title>
       </Helmet>
-      <div className="">
+      <div className="py-10">
         <h3 className="text-center">Sign Up</h3>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -103,6 +112,12 @@ const SignUp = () => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-4/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 hover:bg-primary hover:text-white hover:font-semibold cursor-pointer shadow hover:shadow-md"
             />
           </div>
+          <button>
+            <span>Already have a Account ? </span>
+            <Link to="/login" className="hover:text-blue-600 underline">
+              LogIn
+            </Link>
+          </button>
         </form>
       </div>
     </>

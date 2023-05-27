@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../../../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, singOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    singOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   const navOptions = (
     <>
       <li className="hover:text-primary hover:font-semibold">
@@ -54,16 +63,35 @@ const Navbar = () => {
           Order Food
         </NavLink>
       </li>
-      <li className="hover:text-primary hover:font-semibold">
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "text-secondary" : "default"
-          }
-          to="/login"
-        >
-          Login
-        </NavLink>
-      </li>
+      {user ? (
+        <>
+          <li
+            onClick={handleLogOut}
+            className="hover:text-primary hover:font-semibold"
+          >
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "default"
+              }
+            >
+              LogOut
+            </NavLink>
+          </li>
+        </>
+      ) : (
+        <>
+          <li className="hover:text-primary hover:font-semibold">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "default"
+              }
+              to="/login"
+            >
+              Login
+            </NavLink>
+          </li>
+        </>
+      )}
       {/* <li className="hover:text-primary hover:font-semibold">
         <NavLink
           className={({ isActive }) => (isActive ? "text-primary" : "default")}
