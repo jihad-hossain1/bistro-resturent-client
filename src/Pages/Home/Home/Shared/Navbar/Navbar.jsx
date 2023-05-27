@@ -65,6 +65,12 @@ const Navbar = () => {
       </li>
       {user ? (
         <>
+          <img
+            className="w-6 md:w-8"
+            title={user?.displayName}
+            src={user?.photoURL}
+            alt=""
+          />
           <li
             onClick={handleLogOut}
             className="hover:text-primary hover:font-semibold"
