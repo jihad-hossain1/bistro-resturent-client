@@ -2,12 +2,17 @@ import React, { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { toast } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     handleSubmit,
+    reset,
     register,
     formState: { errors },
   } = useForm();
@@ -16,6 +21,22 @@ const SignUp = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          console.log("user profile info updated");
+          reset();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
     });
   };
   return (
@@ -96,14 +117,14 @@ const SignUp = () => {
               for="User Name"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Confirm Password
+              Photo Url
             </label>
             <input
-              {...register("confirm", { required: true }, { min: 6, max: 18 })}
-              type="password"
+              {...register("photoURL", { required: true })}
+              type="text"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-4/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            {errors.confirm && <span>Please confirm your password</span>}
+            {errors.photoURL && <span>Please confirm your Photo Url</span>}
           </div>
           <div className="mb-6">
             <input
