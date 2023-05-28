@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, singOut } = useContext(AuthContext);
@@ -62,6 +63,14 @@ const Navbar = () => {
         >
           Order Food
         </NavLink>
+      </li>
+      <li>
+        <Link to="/">
+          <button className="flex items-center gap-2">
+            <FaCartArrowDown className="text-xl"></FaCartArrowDown>
+            <div className="badge">+99</div>
+          </button>
+        </Link>
       </li>
       {user ? (
         <>

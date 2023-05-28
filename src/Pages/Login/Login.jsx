@@ -90,16 +90,16 @@ const Login = () => {
               onBlur={handleCaptcha}
               type="text"
               name="captcha"
-              required
               placeholder="type"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-4/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
+          {/* todo: make button disable for captch  */}
           <div className="mb-2">
             <input
               type="submit"
               value="Login"
-              disabled={disabled}
+              disabled={false}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-4/6 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 hover:bg-primary hover:text-white hover:font-semibold cursor-pointer shadow hover:shadow-md"
             />
           </div>
