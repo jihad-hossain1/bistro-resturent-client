@@ -66,7 +66,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <Link to="/">
+        <Link to="/dashboard/mycart">
           <button className="flex items-center gap-2">
             <FaCartArrowDown className="text-xl"></FaCartArrowDown>
             <div className="badge">+{cart.length || 0}</div>
