@@ -1,11 +1,12 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import {
   FaShoppingBasket,
   FaWallet,
   FaCalendarAlt,
   FaHome,
   FaHamburger,
+  FaFrownOpen,
 } from "react-icons/fa";
 
 const Dashbord = () => {
@@ -28,41 +29,41 @@ const Dashbord = () => {
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {/* <!-- Sidebar content here --> */}
             <li>
-              <Link>
+              <NavLink to="/dashbord">
                 <FaHome></FaHome> User Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/dashboard/mycart">
+              <NavLink to="/dashboard/mycart">
                 <FaShoppingBasket></FaShoppingBasket> MyCart
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link>
+              <NavLink to="/dashboard/history">
                 <FaWallet></FaWallet> Payment History
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link>
+              <NavLink to="/dashboard/reservation">
                 <FaCalendarAlt></FaCalendarAlt> Reservations
-              </Link>
+              </NavLink>
             </li>
 
             <div className="divider"></div>
             <li>
-              <Link>
+              <NavLink to="/">
                 <FaHome></FaHome> Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link>
-                <FaHamburger></FaHamburger> Home
-              </Link>
+              <NavLink to="/menu">
+                <FaHamburger></FaHamburger> Our Menu
+              </NavLink>
             </li>
             <li>
-              <Link>
-                <FaHome></FaHome> Home
-              </Link>
+              <NavLink to="/myorder">
+                <FaFrownOpen></FaFrownOpen> Our Food
+              </NavLink>
             </li>
           </ul>
         </div>
