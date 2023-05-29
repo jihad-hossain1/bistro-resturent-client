@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa";
+import useCart from "../../../../../Hook/useCart";
 
 const Navbar = () => {
   const { user, singOut } = useContext(AuthContext);
-
+  const [cart] = useCart();
   const handleLogOut = () => {
     singOut()
       .then(() => {})
@@ -68,7 +69,8 @@ const Navbar = () => {
         <Link to="/">
           <button className="flex items-center gap-2">
             <FaCartArrowDown className="text-xl"></FaCartArrowDown>
-            <div className="badge">+99</div>
+            <div className="badge">+{cart.length || 0}</div>
+            {/* <div className="badge">+0</div> */}
           </button>
         </Link>
       </li>
