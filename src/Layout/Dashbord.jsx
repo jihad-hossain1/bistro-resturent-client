@@ -8,8 +8,10 @@ import {
   FaHamburger,
   FaFrownOpen,
 } from "react-icons/fa";
+import useCart from "../Hook/useCart";
 
 const Dashbord = () => {
+  const [cart] = useCart()
   return (
     <div>
       <div className="drawer drawer-mobile">
@@ -33,9 +35,10 @@ const Dashbord = () => {
                 <FaHome></FaHome> User Home
               </NavLink>
             </li>
-            <li>
+            <li className="flex">
               <NavLink to="/dashboard/mycart">
                 <FaShoppingBasket></FaShoppingBasket> MyCart
+              <span className="btn btn-warning btn-xs ">{cart.length || 0}</span>
               </NavLink>
             </li>
             <li>
