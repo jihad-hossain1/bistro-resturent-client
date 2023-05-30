@@ -8,6 +8,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import { FaGoogle } from "react-icons/fa";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { singIn } = useContext(AuthContext);
@@ -51,7 +53,7 @@ const Login = () => {
     }
   };
   return (
-    <>
+    <div className="py-10">
       <Helmet>
         <title>Bistro Boss || logIn</title>
       </Helmet>
@@ -110,21 +112,11 @@ const Login = () => {
             </Link>
           </p>
         </form>
-      </div>
-      {/* <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-          </div>
-          
+        <div className="w-[50%] mx-auto">
+          <SocialLogin></SocialLogin>
         </div>
-      </div> */}
-    </>
+      </div>
+    </div>
   );
 };
 

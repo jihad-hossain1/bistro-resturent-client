@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import { toast } from "react-hot-toast";
 import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -20,14 +21,14 @@ const SignUp = () => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
-      // console.log(loggedUser);
+      console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          const saveUser = {name: data.name, email: data.email}
+          const saveUser = { name: data.name, email: data.email };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
-              "content-type": "application.json",
+              "content-type": "application/json",
             },
             body: JSON.stringify(saveUser),
           })
@@ -45,7 +46,7 @@ const SignUp = () => {
               }
             });
           // console.log("user profile info updated");
-         
+
           navigate("/");
         })
         .catch((errors) => {
@@ -154,6 +155,7 @@ const SignUp = () => {
             </Link>
           </button>
         </form>
+        <SocialLogin></SocialLogin>
       </div>
     </>
   );
