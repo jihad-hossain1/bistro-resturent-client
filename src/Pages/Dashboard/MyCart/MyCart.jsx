@@ -1,8 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import useCart from "../../../Hook/useCart";
+// import useCart from "../../../Hook/useCart";
 // import { FaDelicious } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useCart from "../../../Hook/useCart";
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
@@ -20,13 +21,15 @@ const MyCart = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/carts/${item._id}`, {
-          method: 'DELETE'
-        }).then(res => res.json()).then(data => {
-          if (data.deletedCount > 0) {
-            refetch()
-             Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          }
+          method: "DELETE",
         })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              refetch();
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          });
       }
     });
   };
@@ -68,13 +71,12 @@ const MyCart = () => {
                       />
                     </div>
                   </div>
-
                 </td>
                 <td className="font-semibold">{item.name}</td>
                 <td>${item.price}</td>
                 <th>
                   <button
-                    onClick={()=>handleDelete(item)}
+                    onClick={() => handleDelete(item)}
                     className="btn btn-outline btn-secondary btn-xs"
                   >
                     Delete
