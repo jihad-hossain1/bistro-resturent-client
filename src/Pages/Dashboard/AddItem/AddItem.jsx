@@ -23,7 +23,10 @@ const AddItem = () => {
         console.log(imgResponse);
         if (imgResponse.success) {
           const imgUrl = imgResponse.data.display_url;
-          console.log(imgUrl);
+          // console.log(imgUrl);
+          const { name, price, category, recipe } = data;
+          const newItem = {name, price, category, recipe, image: imgUrl}
+          console.log(newItem);
         }
       });
   };
