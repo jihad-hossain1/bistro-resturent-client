@@ -56,8 +56,8 @@ const Dashbord = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/additem">
-                    <FaUtensils></FaUtensils> Add Items
+                  <NavLink to="/dashboard/addItem">
+                    <FaUtensils></FaUtensils> Add An Item
                   </NavLink>
                 </li>
                 <li>
@@ -73,7 +73,7 @@ const Dashbord = () => {
                     <FaHome></FaHome> Users Home
                   </NavLink>
                 </li>
-                <li className="flex">
+                {/* <li className="flex">
                   <NavLink to="/dashboard/mycart">
                     <FaShoppingBasket></FaShoppingBasket> MyCart
                     <span className="btn btn-warning btn-xs ">
@@ -90,7 +90,7 @@ const Dashbord = () => {
                   <NavLink to="/dashboard/reservation">
                     <FaUtensils></FaUtensils> Add Items
                   </NavLink>
-                </li>
+                </li> */}
               </>
             )}
             <div className="divider"></div>
