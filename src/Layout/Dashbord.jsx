@@ -21,15 +21,18 @@ const Dashbord = () => {
     <div>
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center ">
+        <div className="drawer-content flex flex-col items-start ">
           {/* <!-- Page content here --> */}
-          <Outlet></Outlet>
+
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="shadow-lg border border-primary px-5  bg-neutral-200 hover:font-semibold rounded-md mt-5 lg:hidden"
           >
-            Open drawer
+            Open Menu
           </label>
+          <div className="ml-12 mx-auto w-full">
+            <Outlet></Outlet>
+          </div>
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
