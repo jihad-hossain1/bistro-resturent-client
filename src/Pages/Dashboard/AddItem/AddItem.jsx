@@ -1,8 +1,12 @@
 import React from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
+// import SweetAlert2 from "react-sweetalert2";
+import Swal from "sweetalert2";
 const img_hosting_token = import.meta.env.VITE_BB_KEY;
 const AddItem = () => {
+  const [axiosSecure] = useAxiosSecure()
   // console.log(img_hosting_token);
   const {
     register,
@@ -20,7 +24,7 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((imgResponse) => {
-        console.log(imgResponse);
+        // console.log(imgResponse);
         if (imgResponse.success) {
           const imgUrl = imgResponse.data.display_url;
           // console.log(imgUrl);
@@ -33,7 +37,20 @@ const AddItem = () => {
             image: imgUrl,
             quantiy: parseFloat(quantiy),
           };
-          console.log(newItem);
+          axiosSecure.post('/menus').then(data => {
+            // console.log('after posting new menus items');
+            if (data.data.insertedId) {
+            //  toast.success("Successfully toasted!");
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+           }
+          })
+          // console.log(newItem);
         }
       });
   };
