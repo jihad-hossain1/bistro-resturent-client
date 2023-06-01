@@ -24,8 +24,15 @@ const AddItem = () => {
         if (imgResponse.success) {
           const imgUrl = imgResponse.data.display_url;
           // console.log(imgUrl);
-          const { name, price, category, recipe } = data;
-          const newItem = {name, price, category, recipe, image: imgUrl}
+          const { name, price, category, recipe, quantiy } = data;
+          const newItem = {
+            name,
+            price: parseFloat(price),
+            category,
+            recipe,
+            image: imgUrl,
+            quantiy: parseFloat(quantiy),
+          };
           console.log(newItem);
         }
       });
