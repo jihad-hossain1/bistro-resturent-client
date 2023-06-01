@@ -1,13 +1,32 @@
 import React from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
+const img_hosting_token = import.meta.env.VITE_BB_KEY;
 const AddItem = () => {
+  // console.log(img_hosting_token);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+  const onSubmit = (data) => {
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgResponse) => {
+        console.log(imgResponse);
+        if (imgResponse.success) {
+          const imgUrl = imgResponse.data.display_url;
+          console.log(imgUrl);
+        }
+      });
+  };
 
   return (
     <>
