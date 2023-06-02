@@ -2,30 +2,31 @@ import React from "react";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useMenu from "../../../Hook/useMenu";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
 
 const ManageItems = () => {
-    const [menu] = useMenu();
-    
-    const handleDelete = (item) => {
-        
-                Swal.fire({
-                  title: "Are you sure?",
-                  text: "You won't be able to revert this!",
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#3085d6",
-                  cancelButtonColor: "#d33",
-                  confirmButtonText: "Yes, delete it!",
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    Swal.fire(
-                      "Deleted!",
-                      "Your file has been deleted.",
-                      "success"
-                    );
-                  }
-                });
-    }
+  const [menu, , refetch] = useMenu();
+  const [axiosSecure] = useAxiosSecure();
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/menus/${item._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="w-full">
       <SectionTitle
@@ -72,10 +73,17 @@ const ManageItems = () => {
                   <td>{item.category}</td>
                   <td>${item.price}</td>
                   <td>
-                    <button className="btn btn-ghost btn-xs btn-outline shadow-md hover:font-semibold">Update</button>
+                    <button className="btn btn-ghost btn-xs btn-outline shadow-md hover:font-semibold">
+                      Update
+                    </button>
                   </td>
                   <td>
-                    <button onClick={handleDelete} className="btn btn-ghost btn-xs  btn-outline shadow-md hover:font-semibold">Delete</button>
+                    <button
+                      onClick={() => handleDelete(item)}
+                      className="btn btn-ghost btn-xs  btn-outline shadow-md hover:font-semibold"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
