@@ -3,10 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa";
 import useCart from "../../../../../Hook/useCart";
+import useAdmin from "../../../../../Hook/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
+  const [isAdmin] = useAdmin();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -25,16 +27,35 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      {/* <li className="hover:text-primary hover:font-semibold">
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "text-secondary" : "default"
-          }
-          to=""
-        >
-          Contact Us
-        </NavLink>
-      </li> */}
+      {isAdmin ? (
+        <>
+          {" "}
+          <li className="hover:text-primary hover:font-semibold">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "default"
+              }
+              to="/dashboard/adminhome"
+            >
+              A.Dashboard
+            </NavLink>
+          </li>{" "}
+        </>
+      ) : (
+        <>
+          {" "}
+          <li className="hover:text-primary hover:font-semibold">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "text-secondary" : "default"
+              }
+              to="/dashboard/userhome"
+            >
+              U.Dashboard
+            </NavLink>
+          </li>{" "}
+        </>
+      )}
       {/* <li className="hover:text-primary hover:font-semibold">
         <NavLink
           className={({ isActive }) =>
