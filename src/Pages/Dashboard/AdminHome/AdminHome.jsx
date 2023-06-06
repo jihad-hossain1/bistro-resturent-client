@@ -13,6 +13,7 @@ import {
   Pie,
   Sector,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 
 const AdminHome = () => {
@@ -181,6 +182,7 @@ const AdminHome = () => {
       </div>
       <div>
         <PieChart width={400} height={400}>
+          <Legend></Legend>
           <Pie
             data={chartData}
             cx="50%"
@@ -195,6 +197,7 @@ const AdminHome = () => {
               <Cell
                 key={`cell-${index}`}
                 fill={colors[index % colors.length]}
+                name={entry.category}
               />
             ))}
           </Pie>
